@@ -1,0 +1,23 @@
+{
+  "BASE_URL": "http://api.chequemate.io",
+  "CARD_APPROVER_RANKING": [
+    {
+      "Approver1": "Value1"
+    },
+    {
+      "Approver2": "Value2"
+    },
+    {
+      "Approver3": "Value3"
+    }
+  ],
+  "UPLOAD_ATTACHMENT_URL": "/image/upload",
+  "UPDATE_ATTACHMENT_URL": "/image/update",
+  "CREATE_CARD_URL": "/card/",
+  "CREATE_DECK_URL": "/deck/",
+  "UPDATE_CARD_URL": "/card/{CARD_ID}",
+  "GET_ALL_DECKS_URL": "/deck?page=",
+  "GET_DECK_URL": "/deck/{DECK_ID}",
+  "GET_ALL_TAGS_URL": "/tags",
+  "GET_ALL_CATEGORIES_URL": "/categories"
+}

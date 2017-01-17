@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="rsc/css/login.css" rel="stylesheet">
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({cache: true});
+        $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
+            FB.init({
+                appId: '881705435187335',
+                xfbml: true,
+                version: 'v2.8',
+                cookie: true,
+                status: true,
+                oauth: true
+            });
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        });
+    });
+
+    function fbLogin() {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                testAPI();
+            } else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        });
+    }
+
+    function fbLogout() {
+        FB.logout(function (response) {
+        });
+    }
+
+    function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function (response) {
+            console.log('Successful login for: ' + response.name);
+        });
+    }
+
+    function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        if (response.status === 'connected') {
+            testAPI();
+        } else if (response.status === 'not_authorized') {
+            console.log('Please log into this app.');
+        } else {
+            console.log('Please log into Facebook.');
+        }
+    }
+</script>
+<div class="container">
+    <div class="vertical-center-row">
+        <div align="center" style="border: 3px solid blanchedalmond; margin: 0 39%; padding: 2%">
+            <p class="text-info">Login to your account</p>
+            <a href="#" class="button facebook" id="fbLogin" onclick="fbLogin()"><span><i class="fa fa-facebook"></i></span>
+                <p>Facebook</p></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

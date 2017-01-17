@@ -1,0 +1,121 @@
+/* Master Styles */
+h1 {
+    color: #369;
+    font-family: 'Roboto', sans-serif;
+    font-size: 250%;
+}
+
+h2, h3 {
+    color: #444;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+}
+
+body {
+    margin: 2em;
+}
+button{
+    background: grey;
+    color: white;
+}
+
+button[disabled] {
+    background: rgb(221,221,221);
+    color:darkgrey;
+}
+
+button:focus {outline:0;}
+
+.dropdown > button {
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown > button > span {
+    float: right;
+    margin-top: 10px;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.list-group-item {
+    width: 100%;
+    z-index: 99999;
+}
+
+.carousel-layout {
+    margin-bottom: 50px;
+}
+
+tags-input {
+    height: 34px;
+}
+
+.tag-template .left-panel {
+    float: left;
+}
+
+.tag-template .left-panel img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.tag-template .right-panel {
+    float: left;
+    margin-left: 5px;
+}
+
+.autocomplete-template .left-panel {
+    float: left;
+}
+
+.autocomplete-template .left-panel img {
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+}
+
+.autocomplete-template .right-panel {
+    float: left;
+    margin-left: 5px;
+    margin-top: 7px;
+}
+
+.autocomplete-template .right-panel span:first-child {
+    font-size: 16px;
+}
+
+.autocomplete-template .right-panel span:nth-child(2) {
+    font-size: 14px;
+    color: gray;
+}
+
+.autocomplete-template .right-panel span:last-child {
+    display: block;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.carousel-item{
+    display: inline-block;
+    width:130px;
+    height:170px;
+    vertical-align: top;
+    border: 1px solid #CCC;
+    /*padding:3px;*/
+    border-radius: 3px;
+    background:white;
+    text-align: left !important;
+    margin-top:5px;
+    overflow: hidden;
+}
+
+.carouselContainer{
+     position:relative;
+    left:30%;
+    top:0px;
+        height: 180px;
+}
