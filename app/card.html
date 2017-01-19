@@ -1,4 +1,14 @@
 <div class="container" ng-cloak ng-controller="AppController">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>
+                <a href="#!/home">Create</a>
+            </li>
+            <li>
+                <a href="#!/home">Process</a>
+            </li>
+        </ul>
+    </div>
     <div class="row">
         <div class="col-md-4 phContainer" ng-controller="PhoneController">
             <div class="phCentered">
@@ -40,7 +50,7 @@
                             <h4 class="modal-title">{{dialogTitle}}</h4>
                         </div>
                         <div class="modal-body">
-                            <p>One fine body&hellip; {{testval}}</p>
+                            <p ng-model="editObj[dialogTitle]">One fine body&hellip; {{testval}}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeDialog()">
@@ -57,7 +67,7 @@
                             <h4 class="modal-title">{{dialogTitle}}</h4>
                         </div>
                         <div class="modal-body">
-                            <textarea class="title" ng-model="editObj[dialogTitle]"></textarea>
+                            <textarea class="text-success" type="text" ng-model="editObj[dialogTitle]"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"
@@ -74,7 +84,7 @@
                             <h4 class="modal-title">{{dialogTitle}}</h4>
                         </div>
                         <div class="modal-body">
-                            <textarea class="title" ng-model="editObj[dialogTitle]"></textarea>
+                            <textarea class="text-justify" ng-model="editObj[dialogTitle]"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"

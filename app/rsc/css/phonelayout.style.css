@@ -141,6 +141,10 @@
     z-index: 10000;
 }
 
+.modal-body input,textarea{
+    width: 100%;
+}
+
 .editable {
     display: block;
     position: absolute;

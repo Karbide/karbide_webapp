@@ -14,17 +14,20 @@ h2, h3 {
 body {
     margin: 2em;
 }
-button{
+
+button {
     background: grey;
     color: white;
 }
 
 button[disabled] {
-    background: rgb(221,221,221);
-    color:darkgrey;
+    background: rgb(221, 221, 221);
+    color: darkgrey;
 }
 
-button:focus {outline:0;}
+button:focus {
+    outline: 0;
+}
 
 .dropdown > button {
     width: 100%;
@@ -95,27 +98,75 @@ tags-input {
 
 .autocomplete-template .right-panel span:last-child {
     display: block;
-  font-size: 14px;
-  font-style: italic;
+    font-size: 14px;
+    font-style: italic;
 }
 
-.carousel-item{
+.carousel-item {
     display: inline-block;
-    width:130px;
-    height:170px;
+    width: 130px;
+    height: 170px;
     vertical-align: top;
     border: 1px solid #CCC;
-    /*padding:3px;*/
     border-radius: 3px;
-    background:white;
+    background: white;
     text-align: left !important;
-    margin-top:5px;
+    margin-top: 5px;
     overflow: hidden;
 }
 
-.carouselContainer{
-     position:relative;
-    left:30%;
-    top:0px;
-        height: 180px;
+.carouselContainer {
+    position: relative;
+    left: 30%;
+    top: 0px;
+    height: 180px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    top:40%;
+    margin-left: -250px;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    width: 100px;
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: #2e6da4;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #0f0f0f;
+    background-color: #5bc0de;
+    /*background: rgba(255, 255, 255, 0.2);*/
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
 }
