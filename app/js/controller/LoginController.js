@@ -1,4 +1,4 @@
-bController.controller('LoginController', ['$scope', 'authFact', '$location', function ($scope, authFact, $location) {
+app.controller('LoginController', ['$window','$scope', '$location', 'authFact', function ($window, $scope, $location, authFact) {
     $scope.name = 'Login Please';
     $scope.fbLogin = function () {
         FB.login(function (response) {
@@ -13,12 +13,14 @@ bController.controller('LoginController', ['$scope', 'authFact', '$location', fu
                     console.log(accessToken);
                     authFact.setAccessToken(accessToken);
 
-                    window.location.href = "#!/home";
+                    // $location.path("/home");
+                    window.location.href = '#!/home';
+                    console.log("Home Location called");
+                    // $location.path('/i');
                     $scope.$apply();
                 });
             } else {
                 console.log('User cancelled login or did not fully authorize.');
-                alert("Login Failed");
             }
         });
     }

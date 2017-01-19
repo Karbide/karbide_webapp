@@ -11,39 +11,41 @@ label.light-label {
 .full-width {
     width: 100% !important;
 }
-.customTextBox, .customSelectBox
-			{
-				border:1px solid #CCC;
-				border-radius: 9px 9px 0 0;
-			}
 
-.customTextArea
-			{
-				min-height:90px;
-				border:1px solid #CCC;
-				border-radius: 18px 18px 0 0;
-			}
+.customTextBox, .customSelectBox {
+    border: 1px solid #CCC;
+    border-radius: 9px 9px 0 0;
+}
+
+.customTextArea {
+    min-height: 90px;
+    border: 1px solid #CCC;
+    border-radius: 18px 18px 0 0;
+}
+
 .phContainer {
-  display: flex;
-  flex-direction: column;
-    height:625px;
-}
-.phCentered {
-  align-self: center;
+    display: flex;
+    flex-direction: column;
+    height: 625px;
 }
 
-.navBtnContainer{
+.phCentered {
+    align-self: center;
+}
+
+.navBtnContainer {
     width: 50px;
     height: 50px;
     display: inline-block;
 }
-.navBtn{
+
+.navBtn {
     float: left;
     margin: 5px;
-        display: block;
+    display: block;
     text-align: center;
     font-size: 15px;
-    border: none;   
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 50%;
 }
