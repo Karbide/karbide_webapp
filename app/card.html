@@ -1,11 +1,17 @@
 <div class="container" ng-cloak ng-controller="AppController">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>
+            <li ng-class="{true:'active', false:'inactive'}[DECK_STATUS == 'Create']">
                 <a href="#!/home">Create</a>
             </li>
-            <li>
-                <a href="#!/home">Process</a>
+            <li ng-class="{true:'active', false:'inactive'}[DECK_STATUS == 'Draft']">
+                <a href="#!/home" ng-click="deckStatus('Draft')">Draft</a>
+            </li>
+            <li ng-class="{true:'active', false:'inactive'}[DECK_STATUS == 'Published']">
+                <a href="#!/home" ng-click="deckStatus('Published')">Published</a>
+            </li>
+            <li ng-class="{true:'active', false:'inactive'}[DECK_STATUS == 'UnPublished']">
+                <a href="#!/home" ng-click="deckStatus('UnPublished')">UnPublished</a>
             </li>
         </ul>
     </div>
@@ -21,7 +27,7 @@
                 <!--<img class="phone-layout-img" src="rsc/img/PhoneLayout_Nexus6P.png">-->
                 <div class="phone-layout-img">
                     <div class="phone-layout" ng-class="getTemplateClass(SelectedDeck.cards[cardIndex].template)">
-                        <div class="media-view" ng-click="update(constants.MEDIA_URL)">
+                        <div class="media-view" ng-click="update(constants.MEDIA_URL,SelectedDeck.cards[cardIndex].media.mediaUrl)">
                             <img class="media-view-img" ng-src="{{SelectedDeck.cards[cardIndex].media.mediaUrl}}"/>
                         </div>
                         <div class="title" ng-click="update(constants.TITLE,SelectedDeck.cards[cardIndex].title)">
@@ -50,11 +56,11 @@
                             <h4 class="modal-title">{{dialogTitle}}</h4>
                         </div>
                         <div class="modal-body">
-                            <p ng-model="editObj[dialogTitle]">One fine body&hellip; {{testval}}</p>
+                            <textarea class="text-success" type="text" ng-model="editObj[dialogTitle]"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeDialog()">
-                                Ok
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                    ng-click="updateMed(dialogTitle,'mediaUrl')">Ok
                             </button>
                         </div>
                     </div>
@@ -182,6 +188,8 @@
 
                     <button ng-click="removeCard()" ng-disabled="SelectedDeck.cards.length <= 1">Remove Card</button>
                     <button ng-click="removeDeck()">Remove Deck</button>
+                    <button ng-click="updateCard()">Update Card</button>
+                    <button ng-click="updateDeck()">Publish Deck</button>
                 </div>
             </div>
         </div>

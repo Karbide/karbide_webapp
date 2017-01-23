@@ -15,4 +15,12 @@ bService.service('CommonService', function ($http, $timeout, Base64) {
         return $http.delete(url);
     };
 
+    self.postRequest = function (url,data) {
+        return $http.post(url,data);
+    };
+
+    self.putRequest = function (url,data) {
+        return $http.put(url,data);
+    };
+
 });

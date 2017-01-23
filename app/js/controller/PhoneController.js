@@ -5,7 +5,7 @@ bController.controller('PhoneController', ['$scope', function ($scope) {
 
 
     $scope.constants = {
-        "MEDIA_URL": "Picture Link",
+        "MEDIA_URL": "Media Link",
         "MEDIA_CREDITS": "Credits",
         "TITLE": "Title",
         "DESCRIPTION": "Descrition",
@@ -25,8 +25,13 @@ bController.controller('PhoneController', ['$scope', function ($scope) {
         $scope.editObj[str] = value;
     };
 
-    $scope.updateVal = function(str, obj){
+    $scope.updateVal = function (str, obj) {
         $scope.SelectedDeck.cards[$scope.cardIndex][obj] = $scope.editObj[str];
+        $scope.closeDialog();
+    };
+
+    $scope.updateMed = function (str, obj) {
+        $scope.SelectedDeck.cards[$scope.cardIndex].media[obj] = $scope.editObj[str];
         $scope.closeDialog();
     };
     $scope.closeDialog = function () {

@@ -1,5 +1,5 @@
 {
-  "BASE_URL": "http://api.chequemate.io",
+  "BASE_URL": "http://localhost",
   "CARD_APPROVER_RANKING": [
     {
       "Approver1": "Value1"
@@ -16,7 +16,7 @@
   "CREATE_CARD_URL": "/card/",
   "CREATE_DECK_URL": "/deck/",
   "UPDATE_CARD_URL": "/card/{CARD_ID}",
-  "GET_ALL_DECKS_URL": "/deck?page=",
+  "GET_ALL_DECKS_URL": "/deck/web?status={STATUS}&page=",
   "GET_DECK_URL": "/deck/{DECK_ID}",
   "GET_ALL_TAGS_URL": "/tags",
   "GET_ALL_CATEGORIES_URL": "/categories"

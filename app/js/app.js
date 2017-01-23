@@ -3,8 +3,10 @@ var bService = angular.module('BluohService', []);
 var app = angular.module('bluohApp', ['BluohController', 'BluohService', 'ngTagsInput', 'slick', 'ngRoute']);
 
 var config = undefined;
+var PLACEHOLDER_DECK_ID = "DECK_ID";
+var PLACEHOLDER_CARD_ID = "CARD_ID";
+// Bootstrapping
 
-// Bootstrapping   
 angular.element(function () {
     $.get("rsc/config/config.json", function (data) {
         config = data;
@@ -22,6 +24,19 @@ window.fbAsyncInit = function () {
         version: 'v2.8',
         cookie: true,
         status: true,
+        oauth: true
+    });
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            var accessToken = FB.getAuthResponse().accessToken;
+            console.log(accessToken);
+            authFact.setAccessToken(accessToken);
+            window.location.href = "#!/home";
+        } else if (response.status === 'not_authorized') {
+            console.log('Please log into this app.');
+        } else {
+            console.log('Please log into Facebook.');
+        }
     });
 };
 
@@ -49,7 +64,3 @@ window.fbAsyncInit = function () {
  }
  }
  */
-
-var PLACEHOLDER_DECK_ID = "DECK_ID";
-// var PLACEHOLDER_CARD_ID =  "CARD_ID" ;
-var CAROUSEL_PAGE_SIZE = 5;
