@@ -12,6 +12,12 @@ html, body, .container {
     vertical-align: middle;
 }
 
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
 .button {
     display: inline-block;
     height: 40px;

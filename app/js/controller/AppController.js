@@ -1,5 +1,6 @@
-bController.controller('AppController', ['$scope', 'CommonService', '$timeout', function ($scope, CommonService, $timeout) {
+bController.controller('AppController', ['$scope', 'CommonService', '$timeout', 'authFact', function ($scope, CommonService, $timeout, authFact) {
     var self = this;
+    $scope.username = authFact.getUser().name;
 
     self.alldecks_url = config.BASE_URL + config.GET_ALL_DECKS_URL;
     self.deck_url = config.BASE_URL + config.GET_DECK_URL;
@@ -14,6 +15,20 @@ bController.controller('AppController', ['$scope', 'CommonService', '$timeout', 
     $scope.deckPageNo = 0;
     $scope.DECK_STATUS = "Published";
 
+
+    $scope.fbLogout = function () {
+        FB.getLoginStatus(function (response) {
+            if (response && response.status === 'connected') {
+                FB.logout(function (response) {
+                    console.log("Logging Out");
+                });
+            } else {
+                console.log("Already Logged Out");
+            }
+        });
+        authFact.logoutOut();
+        document.location.reload();
+    };
 
     $scope.showNextCard = function () {
         $scope.cardIndex++;

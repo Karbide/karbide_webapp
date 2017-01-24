@@ -7,8 +7,8 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider,$loca
         }).when("/home",
         {
             templateUrl: 'card.html',
-            // authenticated: true
-        }).otherwise("/i",
+            authenticated: true
+        }).otherwise("/",
         {
             templateUrl: 'index.html',
             controller: 'LoginController',
@@ -20,10 +20,14 @@ app.run(["$rootScope", "$location", "authFact", function ($rootScope, $location,
         console.log("Redirection Starts " + $location.path());
         if (next.$$route != undefined && next.$$route.authenticated) {
             var userAuth = authFact.getAccessToken();
-            if (!userAuth) {
+            if (userAuth == undefined) {
                 console.log("Redirecting to Login Page")
                 $location.path('/');
             }
         }
+        if ($location.path() == "/" && authFact.getAccessToken() != undefined) {
+            console.log("Already Logged in");
+            $location.path('/home');
+        }
     });
-}])
+}]);

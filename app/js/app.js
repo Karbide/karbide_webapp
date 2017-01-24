@@ -1,6 +1,6 @@
 var bController = angular.module('BluohController', []);
 var bService = angular.module('BluohService', []);
-var app = angular.module('bluohApp', ['BluohController', 'BluohService', 'ngTagsInput', 'slick', 'ngRoute']);
+var app = angular.module('bluohApp', ['BluohController', 'BluohService', 'ngTagsInput', 'slick', 'ngRoute', 'ngCookies']);
 
 var config = undefined;
 var PLACEHOLDER_DECK_ID = "DECK_ID";
@@ -26,7 +26,8 @@ window.fbAsyncInit = function () {
         status: true,
         oauth: true
     });
-    FB.getLoginStatus(function (response) {
+    /*FB.getLoginStatus(function (response) {
+     console.log(response);
         if (response.status === 'connected') {
             var accessToken = FB.getAuthResponse().accessToken;
             console.log(accessToken);
@@ -37,7 +38,7 @@ window.fbAsyncInit = function () {
         } else {
             console.log('Please log into Facebook.');
         }
-    });
+     });*/
 };
 
 (function (d, s, id) {
@@ -50,17 +51,3 @@ window.fbAsyncInit = function () {
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-/*
- function statusChangeCallback(response) {
- console.log('statusChangeCallback');
- console.log(response);
- if (response.status === 'connected') {
- testAPI();
- } else if (response.status === 'not_authorized') {
- console.log('Please log into this app.');
- } else {
- console.log('Please log into Facebook.');
- }
- }
- */
