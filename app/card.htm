@@ -1,0 +1,137 @@
+<div class="row" ng-cloak ng-controller="DeckController">
+    <div ng-include="'phone.htm'"></div>
+    <div class="col-md-8 center">
+        <div ng-controller="CarouselController">
+            <div class="row" style="height:130px">
+                <slick ng-if="dataLoaded" data="dataLoaded" style="height:inherit" infinite="false"
+                       slides-to-show="5" slides-to-scroll="1">
+                    <div ng-repeat="item in AllDecks" class="carousel-item" ng-click="onSelectEvent(item.deckId)"
+                         ng-style="{ 'border' : (item.deckId == SelectedDeck.deckId) ? '3px solid red' : '3px solid #eee' }">
+                        <!--<div class="carousel-item-text">{{item.displayName}}</div>-->
+                        <img class="carousel-item-image" ng-src="{{item.cards[0].media.mediaUrl}}"/>
+                    </div>
+                    <button type="button" class="slick-prev" tabindex="-1" style="display: block;">Previous</button>
+                    <button type="button" class="slick-next" tabindex="-1" style="display: block;">Next</button>
+                </slick>
+            </div>
+            <div class="row" style="position:relative;z-index:9998">
+                <a style="float:left;" role="button" ng-click="previousItems()"> Prev Set </a>
+                <a style="float:right" role="button" ng-click="nextItems()"> Next Set </a>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="form-group-sm">
+                    <label for="deckId" class="light-label">DeckId</label>
+                    <input type="text" class="form-control customSelectBox" id="deckId"
+                           placeholder="deckId" disabled
+                           ng-model="SelectedDeck.deckId">
+                </div>
+                <div class="form-group-sm">
+                    <label for="publishedDate" class="light-label">Published Date</label>
+                    <input type="text" class="form-control customSelectBox" id="publishedDate"
+                           placeholder="Published Date"
+                           ng-value="SelectedDeck.publishedDate  |  date:'MM/dd/yyyy'">
+                </div>
+                <div class="form-group-sm">
+                    <label for="author" class="light-label">Author</label>
+                    <input type="text" class="form-control customSelectBox" id="author"
+                           placeholder="Author"
+                           ng-model="SelectedDeck.author">
+                </div>
+                <div class="form-group-sm">
+                    <label for="approverRanking" class="light-label">Ranking</label>
+                    <input type="text" class="form-control customSelectBox" id="approverRanking"
+                           placeholder="ranking"
+                           ng-model="SelectedDeck.approver.ranking">
+                </div>
+                <div class="form-group-sm">
+                    <label for="liveDays" class="light-label">Live Days</label>
+                    <input type="text" class="form-control customTextBox" id="liveDays" placeholder="live days"
+                           ng-model="SelectedDeck.approver.liveDays">
+                </div>
+                <div class="form-group-sm">
+                    <label for="approverComments" class="light-label">Approver Comments</label>
+                    <textarea class="form-control form-inline customTextArea" id="approverComments" placeholder="approver comments"
+                              ng-model="SelectedDeck.approver.comments"></textarea>
+                </div>
+            </div>
+
+            <div class="col-xs-5">
+                <div class="form-group-sm">
+                    <label for="templateType" class="light-label">Template Type</label>
+                    <input type="text" class="form-control customSelectBox" id="templateType" placeholder="ranking"
+                           ng-model="SelectedDeck.cards[cardIndex].template">
+                </div>
+                <div class="form-group-sm">
+                    <label for="apiFeedSource" class="light-label">Feed Source</label>
+                    <input type="text" class="form-control customSelectBox" id="apiFeedSource"
+                           placeholder="Feed Source"
+                           ng-model="SelectedDeck.apiFeedSource">
+                </div>
+                <div class="form-group-sm">
+                    <label for="publisher" class="light-label">Publisher</label>
+                    <input type="text" class="form-control customSelectBox" id="publisher"
+                           placeholder="Publisher"
+                           ng-model="SelectedDeck.publisher">
+                </div>
+                <div class="form-group-sm">
+                    <label for="tags" class="light-label">Tags</label>
+                    <tags-input id="tags" ng-model="SelectedDeck.tags" display-property="name" placeholder="Tags"
+                                replace-spaces-with-dashes="false">
+                        <auto-complete source="loadTags($query)"
+                                       min-length="0"
+                                       load-on-focus="true"
+                                       load-on-empty="true"
+                                       max-results-to-show="32"
+                                       template="custom-template"></auto-complete>
+                    </tags-input>
+                    <!--<script type="text/ng-template" id="custom-template">-->
+                    <!--<div class="left-panel">-->
+                    <!--<span>{{data.name}}</span>-->
+                    <!--</div>-->
+                    <!--</script>-->
+                </div>
+                <div class="form-group">
+                    <label for="category" class="light-label">Category</label>
+                    <tags-input id="category" ng-model="SelectedDeck.categories" display-property="name"
+                                placeholder="Categories"
+                                replace-spaces-with-dashes="false">
+                        <auto-complete source="loadCategories($query)"
+                                       min-length="0"
+                                       load-on-focus="true"
+                                       load-on-empty="true"
+                                       max-results-to-show="32"
+                                       template="custom-template"></auto-complete>
+                    </tags-input>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <br>
+                <div class="submit">
+                    <button ng-click="removeCard()" class="btn btn-primary btn-info" ng-disabled="SelectedDeck.cards.length <= 1">Remove Card
+                    </button>
+                </div>
+                <div class="submit">
+                    <button ng-click="updateCard()" class="btn btn-info">Update Card</button>
+                </div>
+                <div class="submit">
+                    <button ng-click="removeDeck()" class="btn btn-info" ng-disabled="deck_status != 'Published'">Unpublish Deck</button>
+                </div>
+                <div class="submit">
+                    <button ng-click="updateDeck()" class="btn btn-info" ng-disabled="deck_status == 'Published'">Publish Deck</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <br><br>
+            <div class="col-lg-3 alert well">
+                <div class="vertical-center-row" style="padding: 2px;">
+                    <p class="text-info"><strong>{{username}}</strong></p>
+                    <button class="btn-primary" ng-click="fbLogout()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

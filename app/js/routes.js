@@ -6,7 +6,7 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider,$loca
             controller: 'LoginController',
         }).when("/home",
         {
-            templateUrl: 'card.html',
+            templateUrl: 'home.html',
             authenticated: true
         }).otherwise("/",
         {

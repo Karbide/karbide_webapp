@@ -177,3 +177,7 @@ tags-input {
 .inactive a {
     background-color: #2e6da4;
 }
+
+.submit {
+    margin: 5px;
+}

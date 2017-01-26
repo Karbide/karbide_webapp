@@ -1,0 +1,84 @@
+<div class="col-md-4 phContainer" ng-controller="PhoneController">
+    <div class="phCentered">
+        <button class=" navBtnContainer navBtn glyphicon glyphicon-chevron-left" ng-disabled="cardIndex == 0 "
+                ng-click="showPrevCard()"></button>
+        <button class="phCentered navBtnContainer navBtn glyphicon glyphicon-chevron-right"
+                ng-disabled="cardIndex == SelectedDeck.cards.length-1" ng-click="showNextCard()"></button>
+    </div>
+    <div class="phone-layout-component">
+        <div class="phone-layout-img">
+            <div class="phone-layout" ng-class="getTemplateClass(SelectedDeck.cards[cardIndex].template)">
+                <div class="media-view" ng-click="update(constants.MEDIA_URL,SelectedDeck.cards[cardIndex].media.mediaUrl)">
+                    <img class="media-view-img" ng-src="{{SelectedDeck.cards[cardIndex].media.mediaUrl}}"/>
+                </div>
+                <div class="title" ng-click="update(constants.TITLE,SelectedDeck.cards[cardIndex].title)">
+                    {{SelectedDeck.cards[cardIndex].title}}
+                </div>
+                <div class="description"
+                     ng-click="update(constants.DESCRIPTION, SelectedDeck.cards[cardIndex].content)">
+                    {{SelectedDeck.cards[cardIndex].content.slice(0,500)}}
+                </div>
+                <div class="source-link">
+                    <img class="article-view-img" ng-src="{{SelectedDeck.cards[cardIndex].articleSourceLogo}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal" ng-if="isDialogVisible" ng-cloak>
+        <div class="custom-modal-background">
+        </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" ng-if="dialogTitle == constants.MEDIA_URL">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="closeDialog()" data-dismiss="modal"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{dialogTitle}}</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea class="text-success" type="text" ng-model="editObj[dialogTitle]"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            ng-click="updateMed(dialogTitle,'mediaUrl')">Ok
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-content" ng-if="dialogTitle == constants.TITLE">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="closeDialog()" data-dismiss="modal"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{dialogTitle}}</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea class="text-success" type="text" ng-model="editObj[dialogTitle]"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            ng-click="updateVal(dialogTitle,'title')">Ok
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-content" ng-if="dialogTitle == constants.DESCRIPTION">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="closeDialog()" data-dismiss="modal"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{dialogTitle}}</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea class="text-justify" ng-model="editObj[dialogTitle]"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            ng-click="updateVal(dialogTitle,'content')">Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

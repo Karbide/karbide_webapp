@@ -7,7 +7,9 @@ var DeckViewModel = function () {
     deck.apiFeedSource = '';
     deck.publisher = '';
     deck.card = new Card();
-    
+    deck.authorHandle = '';
+    deck.status = '';
+
     var approver = new ApproverViewModel();
     var tags = [];
     var categories = [];

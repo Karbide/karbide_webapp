@@ -1,0 +1,93 @@
+<div class="container" ng-controller="CreateDeckController">
+    <div ng-include="'phone.htm'"></div>
+    <div class="col-md-8 center">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group-sm">
+                    <label for="publishedDate" class="light-label">Publish Date</label>
+                    <input type="text" class="form-control customSelectBox" id="publishedDate"
+                           placeholder="Published Date"
+                           ng-value="createdDeck.publishedDate  |  date:'MM/dd/yyyy'">
+                </div>
+                <div class="form-group-sm">
+                    <label for="approverRanking" class="light-label">Ranking</label>
+                    <input type="text" class="form-control customSelectBox" id="approverRanking"
+                           placeholder="ranking"
+                           ng-model="createdDeck.approver.ranking">
+                </div>
+                <div class="form-group-sm">
+                    <label for="liveDays" class="light-label">Live Days</label>
+                    <input type="text" class="form-control customTextBox" id="liveDays" placeholder="live days"
+                           ng-model="createdDeck.approver.liveDays">
+                </div>
+                <div class="form-group-sm">
+                    <label for="approverComments" class="light-label">Approver Comments</label>
+                    <textarea class="form-control form-inline customTextArea" id="approverComments" placeholder="approver comments"
+                              ng-model="createdDeck.approver.comments"></textarea>
+                </div>
+                <div class="form-group-sm">
+                    <label for="tags" class="light-label">Tags</label>
+                    <input type="text" class="form-control customSelectBox" id="tags"
+                           placeholder="Tags"
+                           ng-model="createdDeck.tags">
+                </div>
+                <div class="form-group-sm">
+                    <label for="category" class="light-label">Category</label>
+                    <input type="text" class="form-control customSelectBox" id="category"
+                           placeholder="Categories"
+                           ng-model="createdDeck.category">
+                </div>
+                <div class="form-group-sm">
+                    <label for="apiFeedSource" class="light-label">Feed Source</label>
+                    <input type="text" class="form-control customSelectBox" id="apiFeedSource"
+                           placeholder="Feed Source"
+                           ng-model="createdDeck.apiFeedSource">
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group-sm">
+                    <label for="templateType" class="light-label">Template Type</label>
+                    <input type="text" class="form-control customSelectBox" id="templateType" placeholder="ranking"
+                           ng-model="createdDeck.cards[cardIndex].template">
+                </div>
+                <div class="form-group-sm">
+                    <label for="articleSourceLogo" class="light-label">Card Logo</label>
+                    <input type="text" class="form-control customSelectBox" id="articleSourceLogo"
+                           placeholder="Article_Source_Logo"
+                           ng-model="createdDeck.cards[cardIndex].articleSourceLogo">
+                </div>
+                <div class="form-group-sm">
+                    <label for="articleSourceName" class="light-label">Article Source Name</label>
+                    <input type="text" class="form-control customSelectBox" id="articleSourceName"
+                           placeholder="Article_Source_Name"
+                           ng-model="createdDeck.cards[cardIndex].articleSourceName">
+                </div>
+                <div class="form-group-sm">
+                    <label for="title" class="light-label">Title</label>
+                    <input type="text" class="form-control customSelectBox" id="title"
+                           placeholder="Title"
+                           ng-model="createdDeck.cards[cardIndex].title">
+                </div>
+                <div class="form-group-sm">
+                    <label for="content" class="light-label">Content</label>
+                    <input type="text" class="form-control customSelectBox" id="content"
+                           placeholder="Content"
+                           ng-model="createdDeck.cards[cardIndex].content">
+                </div>
+                <div class="form-group-sm">
+                    <label for="articleWebUrl" class="light-label">Article Url</label>
+                    <input type="text" class="form-control customSelectBox" id="articleWebUrl"
+                           placeholder="ArticleWebUrl"
+                           ng-model="createdDeck.cards[cardIndex].articleWebUrl">
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <br>
+                <div class="submit">
+                    <button ng-click="create()" class="btn btn-primary btn-info" ng-disabled="createdDeck.cards.length <= 1">Create Deck</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
